@@ -112,7 +112,7 @@ class ArriendosController extends Controller
         $arriendo->imagen_finalizado = $request->imagenf->store('public/arriendos');
         $arriendo->save();
 
-        $autos = Auto::where('id',$arriendo->id)->first();
+        $autos = Auto::where('id',$arriendo->auto_id)->first();
         $autos->estado = 'd';
         $autos->save(); 
 

@@ -159,19 +159,20 @@
                         </div>
                     </div>
                     
-                    
+                    @if (Auth::user()->id != $usuario->id)
                     <div class="form-group ">
                         <div class="form-check">
                             
-                            <input type="radio" class="form-check-input" name="rol" id="recordar" value="0"  @if ($usuario->rol == 0) checked  @endif>
-                            <label for="recordar"  class="form-check-label">Administrador</label>
+                            <input type="radio" class="form-check-input" name="rol" id="recordar{{$usuario->id}}" value="0"  @if ($usuario->rol == 0) checked  @endif>
+                            <label for="recordar{{$usuario->id}}"  class="form-check-label">Administrador</label>
                             <br>
                         
-                            <input type="radio" class="form-check-input" name="rol" id="recordar1" value="1" @if ($usuario->rol != 0)  checked  @endif>
-                            <label for="recordar1" class="form-check-label">Ejecutivo</label>
+                            <input type="radio" class="form-check-input" name="rol" id="recordar1{{$usuario->id}}" value="1" @if ($usuario->rol != 0)  checked  @endif>
+                            <label for="recordar1{{$usuario->id}}" class="form-check-label">Ejecutivo</label>
                             
                         </div>
                     </div>
+                    @endif
                     <div class="form-group d-flex justify-content-end">
                         <button type="submit" class="btn btn-primary">Modificar</button>         
                         <button type="button" class="btn btn-danger ml-2" data-dismiss="modal">Salir</button>

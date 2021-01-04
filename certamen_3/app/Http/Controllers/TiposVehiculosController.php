@@ -76,17 +76,17 @@ class TiposVehiculosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, TipoVehiculo $id)
+    public function update(Request $request, TipoVehiculo $tipo)
     {
-        $tiposvehiculos->marca = $request->marca;
-        $tiposvehiculos->modelo = $request->modelo;
-        $tiposvehiculos->combustible = $request->combustible;
-        $tiposvehiculos->motor = $request->motor;
-        $tiposvehiculos->clase = $request->clase;
-        $tiposvehiculos->puertas = $request->puertas;
-        $tiposvehiculos->precio = $request->precio;
-        $tiposvehiculos->touch();
-        $tiposvehiculos->save();
+        $tipo->marca = $request->marca;
+        $tipo->modelo = $request->modelo;
+        $tipo->combustible = $request->combustible;
+        $tipo->motor = $request->motor;
+        $tipo->clase = $request->clase;
+        $tipo->puertas = $request->puertas;
+        $tipo->precio = $request->precio;
+        $tipo->touch();
+        $tipo->save();
         return redirect()->route('autos.index');
     }
 

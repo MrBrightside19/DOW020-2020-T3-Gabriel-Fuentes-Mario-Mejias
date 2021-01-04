@@ -149,7 +149,10 @@
             </div>
             <div class="modal-body">
 
+                <h3>Entrega</h3>
                 <img src="{{Storage::url($arriendo->imagen_vigente)}}" alt="Responsive image" class="img-fluid">   
+                <hr>
+                <h3>Devolución</h3>
                 <img src="{{Storage::url($arriendo->imagen_finalizado)}}" alt="Sin entregar" class="img-fluid">
 
             </div>

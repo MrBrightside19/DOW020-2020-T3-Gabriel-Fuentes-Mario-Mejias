@@ -97,11 +97,15 @@ class UsuariosController extends Controller
         $usuario->nombre = $request->nombre;
         $usuario->apellido = $request->apellido;
         $usuario->email = $request->email;
-        $usuario->rol = $request->rol;
+        if(Auth::user()->id != $usuario->id){
+
+            $usuario->rol = $request->rol;
+        }
         $usuario->touch();
         $usuario->save();
         return redirect()->route('usuarios.index');
     }
+
     public function password(Request $request, Usuario $usuario){
         $usuario->password = Hash::make($request->password);
         $usuario->save();

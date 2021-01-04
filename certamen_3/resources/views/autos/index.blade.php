@@ -80,27 +80,6 @@
                                 </div>
                                 
                             </div>
-                            {{-- <div class="col-md-6 form-group ">
-                                <label class="form-check-label">Estado</label>
-                                    <div class="col-6 pt-3">   
-                                        <input value="d" type="radio" class="form-check-input" name="estado" checked id="estado1">
-                                        <label for="estado1" class="form-check-label">Disponible</label>
-                                    </div>
-                                    
-                                    <div class="col-6 pt-3">
-                                        <input value="a" type="radio" class="form-check-input" name="estado" id="estado2">
-                                        <label for="estado2" class="form-check-label">Arrendado</label>
-                                    </div>
-                                    <div class="col-6  pt-3">    
-                                        <input value="m" type="radio" class="form-check-input" name="estado" id="estado3">
-                                        <label for="estado3" class="form-check-label">Mantenimiento</label>
-                                    </div>
-                                    
-                                    <div class="col-6 pt-3">
-                                        <input value="b" type="radio" class="form-check-input" name="estado" id="estado4">
-                                        <label for="estado4" class="form-check-label">De Baja</label>
-                                    </div>
-                            </div> --}}
                         </div>
 
                         <div class="form-row">
@@ -155,14 +134,15 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header bg-secondary text-light">
-                <h4 >Gestionar Tipo Vehiculo</h4>
+                <h4 >Modificar Tipo Vehiculo</h4>
                 <button type="button" class="close" data-dismiss="modal">
                     <span><i class="fas fa-times text-light"></i></span>
                 </button>
             </div>
             <div class="modal-body">
                 <form method="POST" action="{{route('tipos.update',$tipo->id)}}">
-                    @csrf   
+                    @csrf  
+                    @method('put') 
                     <div class="form-row">
                         <div class="col-md-6 form-group">
                             <label for="marca" class="col-form-label ">Marca</label>
@@ -198,19 +178,17 @@
                             <label>Tipo Combustible:</label>
                             <br>
                             <div class="col-md-6 form-group">
-                            
-                                {{-- <div class="row"> --}}
-                                    <div class="col-8 offset-2">
-                                        <input value="b" type="radio" class="form-check-input" name="combustible" @if ($tipo->combustible == 'b') checked @endif id="combustible1">
-                                        <label for="combustible1" class="form-check-label">Bencina</label>
+
+                                    <div class="col-8 offset-2 form-check">
+                                        <input value="b" type="radio" class="form-check-input" name="combustible" @if ($tipo->combustible == 'b') checked @endif id="combustible-1{{$tipo->id}}">
+                                        <label for="combustible-1{{$tipo->id}}" class="form-check-label">Bencina</label>
                                         <br>
-                                        <input value="d" type="radio" class="form-check-input" name="combustible" @if ($tipo->combustible == 'd') checked @endif id="combustible2">
-                                        <label for="combustible2" class="form-check-label">Diesel</label>
+                                        <input value="d" type="radio" class="form-check-input" name="combustible" @if ($tipo->combustible == 'd') checked @endif id="combustible-2{{$tipo->id}}">
+                                        <label for="combustible-2{{$tipo->id}}" class="form-check-label">Diesel</label>
                                         <br>
-                                        <input value="h" type="radio" class="form-check-input" name="combustible" @if ($tipo->combustible == 'h') checked @endif id="combustible3">
-                                        <label for="combustible3" class="form-check-label">Hibrido</label>
+                                        <input value="h" type="radio" class="form-check-input" name="combustible" @if ($tipo->combustible == 'h') checked @endif id="combustible-3{{$tipo->id}}">
+                                        <label for="combustible-3{{$tipo->id}}" class="form-check-label">Hibrido</label>
                                     </div>
-                                {{-- </div> --}}
                             </div>
                         </div>
                     </div>
@@ -363,26 +341,26 @@
                                 <label>Transmisión</label>
                                 <br>
                                 <div class="col-4 offset-1 pt-2">    
-                                    <input value="a" type="radio" class="form-check-input" name="transmision" id="transmision1" @if ($auto->transmision == 'a') checked  @endif>
-                                    <label for="transmision1" class="form-check-label">Automático</label>
+                                    <input value="a" type="radio" class="form-check-input" name="transmision" id="transmision1{{$auto->id}}" @if ($auto->transmision == 'a') checked  @endif>
+                                    <label for="transmision1{{$auto->id}}" class="form-check-label">Automático</label>
                                 </div>
                                 
                                 <div class="col-4 offset-1 pt-2">
-                                    <input value="b" type="radio" class="form-check-input" name="transmision" id="transmision2" @if ($auto->transmision == 'b') checked  @endif> 
-                                    <label for="transmision2" class="form-check-label">Manual</label>
+                                    <input value="b" type="radio" class="form-check-input" name="transmision" id="transmision2{{$auto->id}}" @if ($auto->transmision == 'b') checked  @endif> 
+                                    <label for="transmision2{{$auto->id}}" class="form-check-label">Manual</label>
                                 </div>  
                             </div>
                     
                             <div class="col-md-6 form-group ">
                                 <label class="form-check-label">Estado</label>
                                 <div class="col-6 pt-3">   
-                                    <input value="d" type="radio" class="form-check-input" name="estado" checked id="estado1" @if ($auto->estado == 'd') checked  @endif>
-                                    <label for="estado1" class="form-check-label">Disponible</label>
+                                    <input value="d" type="radio" class="form-check-input" name="estado" checked id="estado1{{$auto->id}}" @if ($auto->estado == 'd') checked  @endif>
+                                    <label for="estado1{{$auto->id}}" class="form-check-label">Disponible</label>
                                 </div>
                                 
                                 <div class="col-6  pt-3">    
-                                    <input value="m" type="radio" class="form-check-input" name="estado" id="estado3" @if ($auto->estado == 'm') checked  @endif>
-                                    <label for="estado3" class="form-check-label">Mantenimiento</label>
+                                    <input value="m" type="radio" class="form-check-input" name="estado" id="estado3{{$auto->id}}" @if ($auto->estado == 'm') checked  @endif>
+                                    <label for="estado3{{$auto->id}}" class="form-check-label">Mantenimiento</label>
                                 </div>
                                 
                             </div>
